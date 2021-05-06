@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="app.appworks.school.stylish">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
+
+
+    <application
+            tools:replace="android:allowBackup"
+            android:name=".StylishApplication"
+            android:usesCleartextTraffic="true"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="AllowBackup">
+
+        <provider
+                android:name="app.appworks.school.stylish.MyContentProvider"
+                android:authorities="com.scolley.provider"
+                android:enabled="true"
+                android:exported="true"></provider>
+
+        <activity
+                android:name=".MainActivity"
+                android:label="@string/app_name"
+                android:screenOrientation="sensorPortrait"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                tools:ignore="LockedOrientationActivity"
+                android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter android:label="A">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_BROWSER" />
+
+                <data
+                        android:host="test"
+                        android:pathPattern="/d"
+                        android:scheme="example" />
+            </intent-filter>
+
+        </activity>
+
+
+
+        <activity android:name=".LogoActivity"
+                  android:theme="@style/LogoTheme"
+                  android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+
+        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+    </application>
+
+</manifest>
